@@ -12,7 +12,7 @@ namespace Gsb4
         public String dateJour()
         {
             DateTime ajd = DateTime.Now;
-            String asString = ajd.ToString("yyyyMM");
+            String asString = ajd.ToString("dd/MM/yyyy");
             return asString; 
         }
 

@@ -23,7 +23,7 @@ namespace Gsb4
 
         MySqlCommand oCom;
 
-        GestionDate date = new GestionDate();
+       
         public Form1()
         {
             InitializeComponent();
@@ -33,26 +33,52 @@ namespace Gsb4
         {
             
         }
-
+        private void InitializeTimer()
+        {
+            timer1.Interval = 10000;
+            timer1.Tick += new EventHandler(timer1_Tick);
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            timer1.Stop();
             try
             {
+                timer1.Start();
+                GestionDate date = new GestionDate();
+                String ajd = date.dateJour();
+                int a = int.Parse(ajd.Substring(0, 1));
+                if (a >= 1 && a <= 17)
+                {
+                    maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
 
-                maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
+                    maConnexion.openConnection();
 
-                maConnexion.openConnection();
+                    DataTable dt = new DataTable();
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    oCom1.ExecuteNonQuery();
 
-                DataTable dt = new DataTable();
-                MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
-                oCom1.ExecuteNonQuery();
+                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                    dt.Load(oCom.ExecuteReader());
 
-                oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
-                dt.Load(oCom.ExecuteReader());
+                    dataGridView1.DataSource = dt;
+                    maConnexion.closeConnection();
+                }
+                if (a > 20)
+                {
+                    maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
 
-                dataGridView1.DataSource = dt;
-                maConnexion.closeConnection();
+                    maConnexion.openConnection();
 
+                    DataTable dt = new DataTable();
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    oCom1.ExecuteNonQuery();
+
+                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                    dt.Load(oCom.ExecuteReader());
+
+                    dataGridView1.DataSource = dt;
+                    maConnexion.closeConnection();
+                }
             }
             catch (Exception emp)
             {
