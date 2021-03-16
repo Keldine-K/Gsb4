@@ -44,15 +44,17 @@ namespace Gsb4
             try
             {
                 timer1.Start();
+
                 GestionDate date = new GestionDate();
                 String ajd = date.dateJour();
                 int a = int.Parse(ajd.Substring(0, 1));
-                if (a >= 1 && a <= 17)
+                maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
+
+                
+                if (a >= 1 && a <= 10)
                 {
-                    maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
 
                     maConnexion.openConnection();
-
                     DataTable dt = new DataTable();
                     MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
@@ -61,16 +63,13 @@ namespace Gsb4
                     dt.Load(oCom.ExecuteReader());
 
                     dataGridView1.DataSource = dt;
-                    maConnexion.closeConnection();
                 }
                 if (a > 20)
                 {
-                    maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
-
                     maConnexion.openConnection();
 
                     DataTable dt = new DataTable();
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
                     oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
