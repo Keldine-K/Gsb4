@@ -48,6 +48,7 @@ namespace Gsb4
                 GestionDate date = new GestionDate();
                 String ajd = date.dateJour();
                 int a = int.Parse(ajd.Substring(0, 1));
+
                 maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
 
                 
@@ -59,10 +60,10 @@ namespace Gsb4
                     MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
-                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                   /* oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
                     dt.Load(oCom.ExecuteReader());
 
-                    dataGridView1.DataSource = dt;
+                    dataGridView1.DataSource = dt;*/
                 }
                 if (a > 20)
                 {
@@ -72,12 +73,14 @@ namespace Gsb4
                     MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
-                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                    /*oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
                     dt.Load(oCom.ExecuteReader());
 
-                    dataGridView1.DataSource = dt;
+                    dataGridView1.DataSource = dt;*/
                     maConnexion.closeConnection();
+                    
                 }
+                timer1.Stop();
             }
             catch (Exception emp)
             {
