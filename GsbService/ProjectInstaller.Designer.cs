@@ -29,30 +29,32 @@ namespace GsbService
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
+            this.ServiceGsb = new System.ServiceProcess.ServiceProcessInstaller();
             this.serviceInstaller1 = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // ServiceGsb
             // 
-            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalService;
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.ServiceGsb.Account = System.ServiceProcess.ServiceAccount.LocalService;
+            this.ServiceGsb.Password = null;
+            this.ServiceGsb.Username = null;
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "Service1";
+            this.serviceInstaller1.Description = "Ce service change l\'état des fiches frais toute les 24h durant une date donnée.";
+            this.serviceInstaller1.DisplayName = "Service GSB";
+            this.serviceInstaller1.ServiceName = "Service GSB";
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
+            this.ServiceGsb,
             this.serviceInstaller1});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
+        private System.ServiceProcess.ServiceProcessInstaller ServiceGsb;
         private System.ServiceProcess.ServiceInstaller serviceInstaller1;
     }
 }

@@ -33,9 +33,11 @@ namespace Gsb4
         {
             
         }
+
+        // Initialisation du Timer
         private void InitializeTimer()
         {
-            timer1.Interval = 10000;
+            timer1.Interval = 10000; // intervale du timer toutes les 10 secondes
             timer1.Tick += new EventHandler(timer1_Tick);
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -45,27 +47,33 @@ namespace Gsb4
             {
                 timer1.Start();
 
-                GestionDate date = new GestionDate();
-                String ajd = date.dateJour();
-                int a = int.Parse(ajd.Substring(0, 1));
+                GestionDate date = new GestionDate(); // on instancie un objet type GestionDate
+                String ajd = date.dateJour(); // on récupere de la date du jour sous format "dd/mm/yyyy"
+                int a = int.Parse(ajd.Substring(0, 1));  // on récupere juste le jour le "dd" et on le convertie en int
 
-                maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp);
+                maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp); // connexion à la BDD (cf ConnexionSql.cs)
 
                 
-                if (a >= 1 && a <= 10)
+                if (a >= 1 && a <= 10) // vérifications que c'est bien compris entre 1 et 10 inclus
                 {
 
-                    maConnexion.openConnection();
-                    DataTable dt = new DataTable();
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
-                    oCom1.ExecuteNonQuery();
+                    maConnexion.openConnection(); // ouverture de la connexion 
 
-                   /* oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                    DataTable dt = new DataTable();
+                    //on modifie l'état des fiches de frais à l'état 'CR' en 'CL' que pour les fiches du mois précedent.
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    oCom1.ExecuteNonQuery();  //Excecution de la requête
+
+                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent()); 
                     dt.Load(oCom.ExecuteReader());
 
-                    dataGridView1.DataSource = dt;*/
+                    dataGridView1.DataSource = dt;
+                    maConnexion.closeConnection();
                 }
-                if (a > 20)
+
+                // on refait la même chose mais cette fois la tache commence à partir du 20
+                // pour les fiches en état 'RB' qui passe à 'VA'
+                if (a >= 20)
                 {
                     maConnexion.openConnection();
 
@@ -73,10 +81,10 @@ namespace Gsb4
                     MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
-                    /*oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
+                    oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
                     dt.Load(oCom.ExecuteReader());
 
-                    dataGridView1.DataSource = dt;*/
+                    dataGridView1.DataSource = dt;
                     maConnexion.closeConnection();
                     
                 }

@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gsb4
 {
-    class ConnexionSql
+   public class ConnexionSql
     {
 
         // Variable locale pour stocker une référence vers l'instance
