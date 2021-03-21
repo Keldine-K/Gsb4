@@ -40,3 +40,24 @@ Les paramètres affectés sont :
    logtoconsole = 
    logfile = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.InstallLog
    assemblypath = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe
+Désinstallation de l'assembly 'C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe'.
+Les paramètres affectés sont :
+   logtoconsole = 
+   logfile = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.InstallLog
+   assemblypath = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe
+Suppression de la source EventLog Service de Gsb.
+Le service Service de Gsb est en cours de suppression du système...
+Le service Service de Gsb a été retiré avec succès du système.
+Installation de l'assembly 'C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe'.
+Les paramètres affectés sont :
+   logtoconsole = 
+   logfile = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.InstallLog
+   assemblypath = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe
+Installation du service Service de Gsb en cours...
+Le service Service de Gsb a été installé avec succès.
+Création d'une source EventLog Service de Gsb dans le journal Application...
+Validation de l'assembly 'C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe'.
+Les paramètres affectés sont :
+   logtoconsole = 
+   logfile = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.InstallLog
+   assemblypath = C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\GsbService.exe
