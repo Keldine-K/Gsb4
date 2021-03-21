@@ -83,7 +83,7 @@ namespace GsbService
 
                 //on modifie l'état des fiches de frais à l'état 'RB' en 'VA' que pour les fiches du mois précedent.
 
-                MySqlCommand oCom = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
+                MySqlCommand oCom = maConnexion.reqExec("Update testfichefrais set idEtat = 'VA' where idEtat ='RB' and mois =" + date.moisPrecedent());
                 oCom.ExecuteNonQuery();
 
                 maConnexion.closeConnection(); // fermeture de la connexion
