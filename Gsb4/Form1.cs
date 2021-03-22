@@ -50,18 +50,18 @@ namespace Gsb4
                 GestionDate date = new GestionDate(); // on instancie un objet type GestionDate
                 String ajd = date.dateJour(); // on récupere de la date du jour sous format "dd/mm/yyyy"
                 int a = int.Parse(ajd.Substring(0, 1));  // on récupere juste le jour le "dd" et on le convertie en int
-
+               
                 maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp); // connexion à la BDD (cf ConnexionSql.cs)
 
                 
-                if (a >= 1 && a <= 10) // vérifications que c'est bien compris entre 1 et 10 inclus
+                if (a <= 10) // vérifications que c'est bien compris entre 1 et 10 inclus
                 {
 
                     maConnexion.openConnection(); // ouverture de la connexion 
 
                     DataTable dt = new DataTable();
                     //on modifie l'état des fiches de frais à l'état 'CR' en 'CL' que pour les fiches du mois précedent.
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CR' where idEtat ='CL' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();  //Excecution de la requête
 
                     oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent()); 
@@ -78,7 +78,7 @@ namespace Gsb4
                     maConnexion.openConnection();
 
                     DataTable dt = new DataTable();
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'VA' where idEtat ='RB' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
                     oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());
