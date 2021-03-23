@@ -35,18 +35,28 @@ namespace Gsb4
         }
 
         // Initialisation du Timer
+
+        /// <summary>
+        /// Initialisation du timer toute les 10s
+        /// </summary>
         private void InitializeTimer()
         {
             timer1.Interval = 10000; // intervale du timer toutes les 10 secondes
             timer1.Tick += new EventHandler(timer1_Tick);
         }
+
+        /// <summary>
+        /// Le timer vas lancer des requêtes SQL pour modifier les tables 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
             try
             {
                 timer1.Start();
-
+                
                 GestionDate date = new GestionDate(); // on instancie un objet type GestionDate
                 String ajd = date.dateJour(); // on récupere de la date du jour sous format "dd/mm/yyyy"
                 int a = int.Parse(ajd.Substring(0, 1));  // on récupere juste le jour le "dd" et on le convertie en int
@@ -61,7 +71,7 @@ namespace Gsb4
 
                     DataTable dt = new DataTable();
                     //on modifie l'état des fiches de frais à l'état 'CR' en 'CL' que pour les fiches du mois précedent.
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CR' where idEtat ='CL' and mois =" + date.moisPrecedent());
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'CL' where idEtat ='CR' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();  //Excecution de la requête
 
                     oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent()); 
@@ -73,6 +83,8 @@ namespace Gsb4
 
                 // on refait la même chose mais cette fois la tache commence à partir du 20
                 // pour les fiches en état 'RB' qui passe à 'VA'
+                
+
                 if (a >= 20)
                 {
                     maConnexion.openConnection();

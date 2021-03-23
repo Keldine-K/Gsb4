@@ -33,3 +33,4 @@ C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\Gsb4\obj\Debug\Gsb4.csproj.CoreCompileIn
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\Gsb4\obj\Debug\Gsb4.csproj.CopyComplete
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\Gsb4\obj\Debug\Gsb4.exe
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\Gsb4\obj\Debug\Gsb4.pdb
+C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\Gsb4\bin\Debug\Gsb4.xml
