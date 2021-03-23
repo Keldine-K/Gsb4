@@ -42,3 +42,4 @@ C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\TestUnitaire\obj\Debug\TestUnitaire.cspr
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\TestUnitaire\obj\Debug\TestUnitaire.csproj.CopyComplete
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\TestUnitaire\obj\Debug\TestUnitaire.dll
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\TestUnitaire\obj\Debug\TestUnitaire.pdb
+C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\TestUnitaire\bin\Debug\Gsb4.xml

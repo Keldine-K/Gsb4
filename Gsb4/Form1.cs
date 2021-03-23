@@ -59,11 +59,11 @@ namespace Gsb4
                 
                 GestionDate date = new GestionDate(); // on instancie un objet type GestionDate
                 String ajd = date.dateJour(); // on récupere de la date du jour sous format "dd/mm/yyyy"
-                int a = int.Parse(ajd.Substring(0, 1));  // on récupere juste le jour le "dd" et on le convertie en int
+                int a = int.Parse(ajd.Substring(0, 2));  // on récupere juste le jour le "dd" et on le convertie en int
                
                 maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp); // connexion à la BDD (cf ConnexionSql.cs)
 
-                
+                textBox1.Text = a.ToString();
                 if (a <= 10) // vérifications que c'est bien compris entre 1 et 10 inclus
                 {
 

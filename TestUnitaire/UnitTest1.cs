@@ -9,10 +9,15 @@ namespace TestUnitaire
         GestionDate date = new GestionDate();
         [TestMethod]
        
-        public void TestMethod1()
+        public void TestMoisPrecedent()
         {
             Assert.AreEqual("202102", date.moisPrecedent(), "Erreur");
-            Assert.AreEqual("202104", date.moisSuivant(), "Erreur");
+            Assert.AreEqual("202105", date.moisPrecedent(), "Erreur");
+
+        }
+        public void TestDateDuJour()
+        {
+            Assert.AreEqual("23/03/2021", date.dateJour(), "Erreur");
 
         }
     }

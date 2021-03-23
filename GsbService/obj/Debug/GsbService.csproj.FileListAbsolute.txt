@@ -35,3 +35,4 @@ C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\obj\Debug\GsbService.csproj.C
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\obj\Debug\GsbService.csproj.CopyComplete
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\obj\Debug\GsbService.exe
 C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\obj\Debug\GsbService.pdb
+C:\Users\kalaz\OneDrive\Bureau\PPE\Gsb4\GsbService\bin\Debug\Gsb4.xml
