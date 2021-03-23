@@ -63,7 +63,7 @@ namespace Gsb4
                
                 maConnexion = ConnexionSql.getInstance(provider, dataBase, Uid, mdp); // connexion à la BDD (cf ConnexionSql.cs)
 
-                textBox1.Text = a.ToString();
+                
                 if (a <= 10) // vérifications que c'est bien compris entre 1 et 10 inclus
                 {
 
@@ -90,7 +90,7 @@ namespace Gsb4
                     maConnexion.openConnection();
 
                     DataTable dt = new DataTable();
-                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'VA' where idEtat ='RB' and mois =" + date.moisPrecedent());
+                    MySqlCommand oCom1 = maConnexion.reqExec("Update testfichefrais set idEtat = 'RB' where idEtat ='VA' and mois =" + date.moisPrecedent());
                     oCom1.ExecuteNonQuery();
 
                     oCom = maConnexion.reqExec("Select * from testfichefrais where mois =" + date.moisPrecedent());

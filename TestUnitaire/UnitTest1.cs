@@ -12,7 +12,7 @@ namespace TestUnitaire
         public void TestMoisPrecedent()
         {
             Assert.AreEqual("202102", date.moisPrecedent(), "Erreur");
-            Assert.AreEqual("202105", date.moisPrecedent(), "Erreur");
+            Assert.AreNotEqual("202105", date.moisPrecedent(), "Erreur");
 
         }
         public void TestDateDuJour()
